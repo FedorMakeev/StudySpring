@@ -1,0 +1,52 @@
+import jdk.nashorn.internal.objects.NativeRegExp
+
+apply plugin: 'java'
+//apply plugin: 'application'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+webAppDirName = 'src/main/webapp'
+//mainClassName = 'org.fm.study.Starter'
+
+repositories {
+    maven { url "http://repo1.maven.org/maven2" }
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+//jar {
+//    manifest {
+//        attributes 'Main-Class': 'org.fm.study.Starter'
+//    }
+//}
+
+war {
+    webInf.into('views') {
+        from fileTree('src/main/resources/WEB-INF/views').files
+        include "*.*"
+    }
+
+    archiveName 'Spittr.war'
+}
+
+test {
+    maxParallelForks = 5
+    forkEvery = 50
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.springframework', name: 'spring-test', version: '4.2.1.RELEASE'
+
+    compile 'org.springframework:spring-context:4.2.1.RELEASE'
+    compile 'org.springframework:spring-core:4.2.1.RELEASE'
+    compile 'org.springframework:spring-aop:4.2.1.RELEASE'
+    compile 'org.springframework:spring-aspects:4.2.1.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.1.RELEASE'
+    compile 'javax.servlet:javax.servlet-api:4.0.0-b01'
+    compile 'javax.servlet:jstl:1.2'
+    compile 'org.apache.commons:commons-lang3:3.1'
+}
