@@ -16,7 +16,7 @@ public class Starter {
     }
 
     public static void main (String[] args){
-        System.out.println("Hello, World");
+        System.out.println("Application started");
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         State state = context.getBean(State.class);
         System.out.println(state.getInfo());
@@ -35,5 +35,7 @@ public class Starter {
 
         CompactDisc cd = context.getBean(CompactDisc.class);
         cd.playTrack(10);
+
+        System.out.println("Application finished");
     }
 }
