@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Spittle {
     private final Long id;
-    private final String message;
+    private String message;
     private final Date time;
     private Double latitude;
     private Double longitude;
@@ -22,6 +22,10 @@ public class Spittle {
         this.time = time;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public long getId() {
